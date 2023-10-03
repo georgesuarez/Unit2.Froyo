@@ -7,14 +7,16 @@ const userInput = prompt(
 // Split the string of froyoFlavors seperated by commas
 const froyoFlavors = userInput.split(",");
 
-const froyoOrders = [];
+
 function generateFroyoOrder() {
+const froyoOrders = [];
     for (let i = 0; i < froyoFlavors.length; i++) {
         froyoOrders.push({
             flavor: froyoFlavors[i],
             count: countFroyoFlavors(froyoFlavors[i]),
         });
     }
+    return froyoOrders;
 }
 
 function countFroyoFlavors(target) {
@@ -27,13 +29,13 @@ function countFroyoFlavors(target) {
     return count;
 }
 
-function displayFroyoOrder() {
+function displayFroyoOrder(froyoOrders) {
     for (const order in froyoOrders) {
         console.log(
-            `Flavor: ${froyoOrders[order].flavor} Count: ${froyoOrders[order].count}`
+            `Flavor: ${froyoOrders[order].flavor} Qty: ${froyoOrders[order].count}`
         );
     }
 }
 
-generateFroyoOrder();
-displayFroyoOrder();
+const froyoOrders = generateFroyoOrder();
+displayFroyoOrder(froyoOrders);
